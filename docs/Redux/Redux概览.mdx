@@ -1,0 +1,61 @@
+---
+sidebar_position: 2
+---
+
+## Redux 是什么？
+
+**`Redux` 是一个使用叫做 `action` 的事件来管理和更新应用状态的模式和工具库**它以集中式 Store（centralized store）的方式对整个应用中使用的状态进行集中管理，其规则确保状态只能以可预测的方式更新。
+
+### 为什么使用 Redux
+
+`Redux`可以帮助我们管理**全局**状态。
+
+### 什么时候用 Redux
+
+- 应用中有很多 state 在多个组件中需要使用 (频繁的在组件见传递`state`)
+- 应用 state 会随着时间的推移而频繁更新 (例如: drag/resize/interval)
+- 更新 state 的逻辑很复杂
+- 中型和大型代码量的应用，很多人协同开发
+
+推荐使用 Redux 的方式: `react-redux` + `redux-toolkit(@reduxjs/toolkit)` + `redux devtools`
+
+## Redux 组成
+
+- **state**: 驱动应用的真实数据源头
+- **view**: 基于当前状态的视图的声明性描述
+- **actions**: 根据用户触发的事件，并触发状态更新
+
+### 单向数据流 (one-way data flow)
+
+- `state`描述应用程序在某个时间点的状态
+- 基于`state`渲染`view`
+- 当用户触发事件(例如点击按钮), state 会根据发生的事件进行更新,生成新的`State`(注意不是修改`State`)
+- 基于新的`state`重新渲染`view`
+
+![img](https://cn.redux.js.org/assets/images/one-way-data-flow-04fe46332c1ccb3497ecb04b94e55b97.png)
+
+通过定义和分离 state 管理中涉及的概念并强制执行维护 view 和 state 之间独立性的规则，代码变得更结构化和易于维护。
+
+这就是 Redux 背后的基本思想：应用中使用集中式的全局状态来管理，并明确更新状态的模式，以便让代码具有可预测性。
+
+### 不可变性 `Immutability`
+
+JavaScript 的对象（object）和数组（array）默认都是 mutable 的。如果我创建一个对象，我可以更改其字段的内容。如果我创建一个数组，我也可以更改内容：
+
+```js
+const obj = { a: 1, b: 2 };
+// 对外仍然还是那个对象，但它的内容已经变了\
+// 引用相同,值改变
+obj.b = 3;
+
+const arr = ["a", "b"];
+// 同样的，数组的内容改变了
+arr.push("c");
+arr[1] = "d";
+```
+
+这就是 _改变_ 对象或数组的例子。内存中还是原来对象或数组的引用，但里面的内容变化了。(改变了值但是引用相同)
+
+如果想要不可变的方式来更新，代码必需先**复制**原来的 object/array，然后更新它的复制体。
+
+**Redux 期望所有状态更新都是使用不可变的方式。**
