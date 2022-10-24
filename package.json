@@ -7,7 +7,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "set \"GIT_USER=${process.env.GIT_USER}\" set \"GIT_PASS=${process.env.GIT_PASS}\" && docusaurus deploy",
+    "deploy": "env-cmd docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
@@ -27,6 +27,7 @@
     "@docusaurus/module-type-aliases": "2.1.0",
     "@docusaurus/types": "^2.1.0",
     "@tsconfig/docusaurus": "^1.0.5",
+    "env-cmd": "^10.1.0",
     "typescript": "^4.7.4"
   },
   "browserslist": {
