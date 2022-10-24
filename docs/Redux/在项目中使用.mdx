@@ -1,0 +1,81 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+## 安装
+
+```bash npm2yarn
+npm install @reduxjs/toolkit react-redux
+```
+
+## 配置
+
+这里以`typescript`项目为例:
+
+### 创建一个 Redux store
+
+在任意目录创建一个`store.ts`文件。
+
+```ts store.ts
+import { configureStore } from "@reduxjs/toolkit";
+
+export const store = configureStore({
+  reducer: {},
+});
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
+```
+
+这样我们就创建了一个`store`并且自动配置了 Redux Devtools, 我们可以在开发中来检查这个 store。
+
+### 向 React 提供 Redux store
+
+创建`store`后, 我们可以通过`<Provider>`在顶层组件传递`store`:
+
+<Tabs>
+<TabItem label={'Create React App'} value={'cra'} default>
+
+```tsx app.tsx
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+```
+
+</TabItem>
+<TabItem label={'Next.js'} value={'nextjs'}>
+
+```tsx pages/_app.tsx
+import type { AppProps } from "next/app";
+import { store } from "../store";
+import { Provider } from "react-redux";
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
+}
+
+export default MyApp;
+```
+
+</TabItem>
+</Tabs>
