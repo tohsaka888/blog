@@ -59,3 +59,118 @@ arr[1] = "d";
 如果想要不可变的方式来更新，代码必需先**复制**原来的 object/array，然后更新它的复制体。
 
 **Redux 期望所有状态更新都是使用不可变的方式。**
+
+## 术语
+
+### Action
+
+**action**是一个具有 type 字段的普通 JavaScript 对象。**你可以将 action 视为描述应用程序中发生了什么的事件。**
+
+`type` 字段是一个字符串，给这个 ` action`` 一个描述性的名字，比如 `"todos/todoAdded"`。我们通常把那个类型的字符串写成“域/事件名称”，其中第一部分是这个 `action` 所属的特征或类别，第二部分是发生的具体事情。
+
+`action` 对象可以有其他字段，其中包含有关发生的事情的附加信息。按照惯例，我们将该信息放在名为 `payload` 的字段中。
+
+一个典型的 `action` 对象可能如下所示：
+
+```js
+const addTodoAction = {
+  type: "todos/todoAdded",
+  payload: "Buy milk",
+};
+```
+
+### Reducer
+
+`reducer` 是一个函数，接收当前的 `state` 和一个 `action` 对象，必要时决定如何更新状态，并返回新状态。函数签名是：`(state, action) => newState`。 你可以将 `reducer` 视为一个事件监听器，它根据接收到的 action（事件）类型处理事件。
+
+:::info 说明
+"Reducer" 函数的名字来源是因为它和 Array.reduce() 函数使用的回调函数很类似。
+:::
+
+`Reducer` 必需符合以下规则：
+
+- 仅使用 `state` 和 `action` 参数计算新的状态值
+- 禁止直接修改 state。必须通过复制现有的 state 并对复制的值进行更改的方式来做 不可变更新（immutable updates）。
+- 禁止任何异步逻辑、依赖随机值或导致其他“副作用”的代码。
+
+reducer 函数内部的逻辑通常遵循以下步骤:
+
+- 检查 reducer 是否关心这个 action
+  - 如果是，则复制 state，使用新值更新 state 副本，然后返回新 state
+  - 否则，返回原来的 state 不变
+
+下面是 `reducer` 的小例子，展示了每个 `reducer` 应该遵循的步骤：
+
+```js
+const initialState = { value: 0 };
+
+function counterReducer(state = initialState, action) {
+  // 检查 reducer 是否关心这个 action
+  if (action.type === "counter/increment") {
+    // 如果是，复制 `state`
+    return {
+      ...state,
+      // 使用新值更新 state 副本
+      value: state.value + 1,
+    };
+  }
+  // 返回原来的 state 不变
+  return state;
+}
+```
+
+### Action Creator
+
+`action creator` 是一个创建并返回一个 `action` 对象的函数。它的作用是让你不必每次都手动编写 `action` 对象：
+
+```JavaScript
+const addTodo = text => {
+  return {
+    type: 'todos/todoAdded',
+    payload: text
+  }
+}
+```
+
+### store
+
+当前 `Redux` 应用的 `state` 存在于一个名为 `store` 的对象中。
+
+store 是通过传入一个 reducer 来创建的，并且有一个名为 getState 的方法，它返回当前状态值。
+
+### Dispatch
+
+Redux store 有一个方法叫 `dispatch`。更新 `state` 的唯一方法是调用 `store.dispatch()` 并传入一个 `action` 对象。 `store` 将执行所有 `reducer` 函数并计算出更新后的 state，调用 `getState()` 可以获取新 state。
+
+```js
+store.dispatch({ type: "counter/increment" });
+```
+
+dispatch 一个 action 可以形象的理解为 "触发一个事件"。发生了一些事情，我们希望 store 知道这件事。 Reducer 就像事件监听器一样，当它们收到关注的 action 后，它就会更新 state 作为响应。
+
+我们通常调用 action creator 来调用 action：
+
+```js
+const increment = () => {
+  return {
+    type: 'counter/increment'
+  }
+}
+
+store.dispatch(increment())
+
+console.log(store.getState())
+// {value: 2}
+```
+
+### Selector
+
+`Selector` 函数可以从 store 状态树中提取指定的片段。随着应用变得越来越大，会遇到应用程序的不同部分需要读取相同的数据，`selector` 可以避免重复这样的读取逻辑：
+
+```js
+const selectCounterValue = state => state.value
+
+const currentValue = selectCounterValue(store.getState())
+console.log(currentValue)
+// 2
+```
