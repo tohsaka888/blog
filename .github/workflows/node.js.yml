@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+    GIT_USER: ${{ secrets.GIT_USER }}
+    GIT_PASS: ${{ secrets.GIT_PASS }}
+
 jobs:
   build:
 
@@ -44,6 +48,5 @@ jobs:
     - name: Install dependencies
       run: pnpm install
     - name: deploy blog
-      shell: bash
       run: |
-        echo ${{secrets.GIT_USER}}
+        echo "Hello, $GIT_USER!"
