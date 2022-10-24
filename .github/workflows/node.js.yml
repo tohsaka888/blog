@@ -46,7 +46,6 @@ jobs:
     - name: deploy blog
       shell: bash
       env:
-        GIT_USER: ${{ secrets.TOKEN.GIT_USER }}
-        GIT_PASS: ${{ secrets.TOKEN.GIT_PASS }}
+        TOKEN: ${{ secrets.TOKEN }}
       run: |
-        echo $GIT_USER && GIT_USER=$GIT_USER GIT_PASS=$GIT_PASS yarn deploy
+        echo ${{env.TOKEN}}
