@@ -46,6 +46,7 @@ jobs:
     - name: deploy blog
       shell: bash
       env:
-        TOKEN: ${{ secrets.TOKEN }}
+        TOKEN: ${{ env.TOKEN }}
+        GIT_PASS: ${{ secrets.GIT_PASS }}
       run: |
-        echo ${{env.TOKEN}}
+        echo $TOKEN
