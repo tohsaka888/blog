@@ -49,4 +49,4 @@ jobs:
       run: pnpm install
     - name: deploy blog
       run: |
-        echo "Hello, $GIT_USER!"
+        GIT_USER=$GIT_USER && GIT_PASS=$GIT_PASS && npm run deploy
