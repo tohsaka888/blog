@@ -45,8 +45,5 @@ jobs:
       run: pnpm install
     - name: deploy blog
       shell: bash
-      env:
-        TOKEN: ${{ env.TOKEN }}
-        GIT_PASS: ${{ secrets.GIT_PASS }}
       run: |
-        echo $TOKEN
+        echo ${{secrets.GIT_USER}}
