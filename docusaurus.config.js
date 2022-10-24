@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
@@ -9,15 +9,10 @@ const config = {
   title: "Zanshin",
   tagline: "不自卑、不惧怕、不骄傲、不自满",
   url: "https://tohsaka888.github.io",
-  baseUrl: "/",
+  baseUrl: "/blog/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  customFields: {
-    GIT_USER: process.env.GIT_USER,
-    GIT_PASS: process.env.GIT_PASS,
-    CURRENT_BRANCH: process.env.CURRENT_BRANCH,
-  },
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
