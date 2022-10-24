@@ -21,6 +21,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Retrieve the secret and decode it to a file
+      env:
+        GIT_USER: ${{ secrets.GIT_USER }}
+        GIT_PASS: ${{ secrets.GIT_PASS }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
