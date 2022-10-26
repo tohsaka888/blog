@@ -1,0 +1,29 @@
+---
+sidebar_position: 1
+---
+
+1. “生产者代码（producing code）”会做一些事儿，并且会需要一些时间。例如，通过网络加载数据的代码。它就像一位“歌手”。
+1. “消费者代码（consuming code）”想要在“生产者代码”完成工作的第一时间就能获得其工作成果。许多函数可能都需要这个结果。这些就是“粉丝”。
+1. Promise 是将“生产者代码”和“消费者代码”连接在一起的一个特殊的 JavaScript 对象。用我们的类比来说：这就是就像是“订阅列表”。“生产者代码”花费它所需的任意长度时间来产出所承诺的结果，而 “promise” 将在它（译注：指的是“生产者代码”，也就是下文所说的 executor）准备好时，将结果向所有订阅了的代码开放。
+
+传递给 `new Promise` 的函数被称为 `executor`。当 `new Promise` 被创建，`executor` 会自动运行。它包含最终应产出结果的生产者代码。按照上面的类比：`executor` 就是“歌手”。
+
+:::info
+所以`Promise`包裹的代码是同步执行的。
+:::
+
+它的参数 `resolve` 和 `reject` 是由 `JavaScript` 自身提供的回调。我们的代码仅在 `executor` 的内部。
+
+当 `executor` 获得了结果，无论是早还是晚都没关系，它应该调用以下回调之一：
+
+- `resolve(value)` —— 如果任务成功完成并带有结果 `value`。
+- `reject(error)` —— 如果出现了 `error`，`error` 即为 `error` 对象。
+
+所以总结一下就是：`executor` 会自动运行并尝试执行一项工作。尝试结束后，如果成功则调用 `resolve`，如果出现 `error` 则调用 `reject`。
+
+由 `new Promise` 构造器返回的 `promise` 对象具有以下内部属性：
+
+- state —— 最初是 "pending"，然后在 resolve 被调用时变为 "fulfilled"，或者在 reject 被调用时变为 "rejected"。
+- result —— 最初是 undefined，然后在 resolve(value) 被调用时变为 value，或者在 reject(error) 被调用时变为 error。
+
+![img](https://zh.javascript.info/article/promise-basics/promise-resolve-reject.svg)
