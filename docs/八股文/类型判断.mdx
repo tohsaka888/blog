@@ -1,0 +1,40 @@
+---
+sidebar_position: 4
+---
+
+## 基本数据类型
+
+- boolean
+- null
+- undefined
+- string
+- symbol
+- number
+- bigInt
+- object
+
+## typeof
+
+判断`null`和`Array`会有问题, 如下所示:
+
+```js
+typeof null; // object
+typeof []; // object
+```
+
+## instanceof
+
+`instanceof`是通过原型链来判断的，但是对于对象来说，`Array`也会被转换成`Object`，而且也不能区分基本类型`string`和`boolean`。
+
+## 其他判断方法
+
+### `Object.prototype.toString.call()`
+
+```js
+Object.prototype.toString.call(new Date()); // [object Date]
+Object.prototype.toString.call("1"); // [object String]
+Object.prototype.toString.call(1); // [object Numer]
+Object.prototype.toString.call(undefined); // [object Undefined]
+Object.prototype.toString.call(null); // [object Null]
+Object.prototype.toString.call([]); // [object Array]
+```
