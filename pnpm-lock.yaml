@@ -14,7 +14,7 @@ specifiers:
   prism-react-renderer: 1.3.5
   react: 18.2.0
   react-dom: 18.2.0
-  react-icons: 4.6.0
+  react-icons: 4.7.1
   typescript: 4.8.4
 
 dependencies:
@@ -27,7 +27,7 @@ dependencies:
   prism-react-renderer: 1.3.5_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-icons: 4.6.0_react@18.2.0
+  react-icons: 4.7.1_react@18.2.0
 
 devDependencies:
   '@docusaurus/module-type-aliases': 2.2.0_biqbaboplfbrettd7655fr4n2y
@@ -6829,8 +6829,8 @@ packages:
       react-fast-compare: 3.2.0
       shallowequal: 1.1.0
 
-  /react-icons/4.6.0_react@18.2.0:
-    resolution: {integrity: sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==}
+  /react-icons/4.7.1_react@18.2.0:
+    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
     peerDependencies:
       react: '*'
     dependencies:
