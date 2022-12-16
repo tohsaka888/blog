@@ -6,7 +6,7 @@ sidebar_position: 1
 
 最初版本的 `HTTP` 协议并没有版本号，后来它的版本号被定位在 `0.9` 以区分后来的版本。`HTTP/0.9` 极其简单：请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。
 
-```txt
+```http
 GET /mypage.html
 ```
 
@@ -29,7 +29,7 @@ GET /mypage.html
 
 一个典型的请求看起来就像这样：
 
-```text
+```http
 GET /mypage.html HTTP/1.0
 User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
 
@@ -45,7 +45,7 @@ Content-Type: text/html
 
 接下来是第二个连接，请求获取图片：
 
-```text
+```http
 GET /myimage.gif HTTP/1.0
 User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
 
@@ -64,7 +64,7 @@ Content-Type: text/gif
 - 引入额外的缓存控制机制。
 - 凭借 `Host` 头，能够使不同域名配置在同一个 `IP` 地址的服务器上。
 
-```text
+```http
 GET /en-US/docs/Glossary/Simple_header HTTP/1.1
 Host: developer.mozilla.org
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
