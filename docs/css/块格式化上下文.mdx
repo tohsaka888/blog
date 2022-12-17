@@ -28,12 +28,7 @@
 
 在下面的例子中，我们让 `<div>` 元素浮动，并给它一个 `border` 效果。`<div>` 里的内容现在已经在浮动元素周围浮动起来了。由于浮动的元素比它旁边的元素高，所以 `<div>` 的边框穿出了浮动。浮动脱离了文档流，所以 `<div>` 的 background 和 border 仅仅包含了内容，不包含浮动。
 
-<iframe src="https://codesandbox.io/embed/bfc-example-n95zrs?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="BFC-example"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-/>
+
 
 接下来我们将`container`变为`BFC`:
 
@@ -44,12 +39,12 @@
 
 ## 排除外部浮动
 
-<iframe src="https://codesandbox.io/embed/throbbing-cache-zxvbkh?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="throbbing-cache-zxvbkh"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-/>
+接下来我们将`container`变为`BFC`:
+
+- 将`overflow`设置为`hidden`
+- 将`display`设置为`flow-root` 
+
+设置 `float` 脱离了正常文档流。
 
 ## 外边距重叠
 
