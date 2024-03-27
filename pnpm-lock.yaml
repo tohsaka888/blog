@@ -7,7 +7,7 @@ specifiers:
   '@docusaurus/remark-plugin-npm2yarn': 2.3.1
   '@docusaurus/types': 2.3.1
   '@mdx-js/react': 1.6.22
-  '@tsconfig/docusaurus': 1.0.6
+  '@tsconfig/docusaurus': 2.0.3
   clsx: 1.2.1
   env-cmd: 10.1.0
   motion-effect: ^0.1.1
@@ -32,7 +32,7 @@ dependencies:
 devDependencies:
   '@docusaurus/module-type-aliases': 2.3.1_biqbaboplfbrettd7655fr4n2y
   '@docusaurus/types': 2.3.1_biqbaboplfbrettd7655fr4n2y
-  '@tsconfig/docusaurus': 1.0.6
+  '@tsconfig/docusaurus': 2.0.3
   env-cmd: 10.1.0
   typescript: 4.9.5
 
@@ -2685,8 +2685,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /@tsconfig/docusaurus/1.0.6:
-    resolution: {integrity: sha512-1QxDaP54hpzM6bq9E+yFEo4F9WbWHhsDe4vktZXF/iDlc9FqGr9qlg+3X/nuKQXx8QxHV7ue8NXFazzajsxFBA==}
+  /@tsconfig/docusaurus/2.0.3:
+    resolution: {integrity: sha512-3l1L5PzWVa7l0691TjnsZ0yOIEwG9DziSqu5IPZPlI5Dowi7z42cEym8Y35GHbgHvPcBfNxfrbxm7Cncn4nByQ==}
     dev: true
 
   /@types/body-parser/1.19.2:
